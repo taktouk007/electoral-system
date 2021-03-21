@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(UserAppService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new UserApp(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new UserApp(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'image/png', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -57,6 +57,9 @@ describe('Service Tests', () => {
             city: 'BBBBBB',
             region: 'BBBBBB',
             country: 'BBBBBB',
+            phoneNumber: 'BBBBBB',
+            cin: 'BBBBBB',
+            image: 'BBBBBB',
           },
           elemDefault
         );
@@ -76,6 +79,9 @@ describe('Service Tests', () => {
             city: 'BBBBBB',
             region: 'BBBBBB',
             country: 'BBBBBB',
+            phoneNumber: 'BBBBBB',
+            cin: 'BBBBBB',
+            image: 'BBBBBB',
           },
           elemDefault
         );

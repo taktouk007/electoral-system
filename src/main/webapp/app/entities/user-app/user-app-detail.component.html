@@ -20,6 +20,23 @@
                 <dd>
                     <span>{{ userApp.country }}</span>
                 </dd>
+                <dt><span jhiTranslate="electoralSystemApp.userApp.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{ userApp.phoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.userApp.cin">Cin</span></dt>
+                <dd>
+                    <span>{{ userApp.cin }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.userApp.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="userApp.image">
+                        <a (click)="openFile(userApp.imageContentType, userApp.image)">
+                            <img [src]="'data:' + userApp.imageContentType + ';base64,' + userApp.image" style="max-width: 100%;" alt="userApp image"/>
+                        </a>
+                        {{ userApp.imageContentType }}, {{ byteSize(userApp.image) }}
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="electoralSystemApp.userApp.internalUser">Internal User</span></dt>
                 <dd>
                     {{ userApp.internalUserId }}

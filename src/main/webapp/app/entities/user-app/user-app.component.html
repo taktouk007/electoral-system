@@ -26,6 +26,9 @@
                     <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.city">City</span></th>
                     <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.region">Region</span></th>
                     <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.country">Country</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.phoneNumber">Phone Number</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.cin">Cin</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.image">Image</span></th>
                     <th scope="col" ><span jhiTranslate="electoralSystemApp.userApp.internalUser">Internal User</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -36,6 +39,14 @@
                     <td>{{ userApp.city }}</td>
                     <td>{{ userApp.region }}</td>
                     <td>{{ userApp.country }}</td>
+                    <td>{{ userApp.phoneNumber }}</td>
+                    <td>{{ userApp.cin }}</td>
+                    <td>
+                        <a *ngIf="userApp.image" (click)="openFile(userApp.imageContentType, userApp.image)">
+                            <img [src]="'data:' + userApp.imageContentType + ';base64,' + userApp.image" style="max-height: 30px;" alt="userApp image"/>
+                        </a>
+                        <span *ngIf="userApp.image">{{ userApp.imageContentType }}, {{ byteSize(userApp.image) }}</span>
+                    </td>
                     <td>
                         {{ userApp.internalUserId }}
                     </td>

@@ -1,6 +1,8 @@
 package com.kyubi.digital.service.dto;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import javax.persistence.Lob;
 
 /**
  * A DTO for the {@link com.kyubi.digital.domain.UserApp} entity.
@@ -9,12 +11,25 @@ public class UserAppDTO implements Serializable {
     
     private Long id;
 
+    @NotNull
     private String city;
 
+    @NotNull
     private String region;
 
+    @NotNull
     private String country;
 
+    @NotNull
+    private String phoneNumber;
+
+    @NotNull
+    private String cin;
+
+    @Lob
+    private byte[] image;
+
+    private String imageContentType;
 
     private Long internalUserId;
     
@@ -50,6 +65,38 @@ public class UserAppDTO implements Serializable {
         this.country = country;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCin() {
+        return cin;
+    }
+
+    public void setCin(String cin) {
+        this.cin = cin;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+    }
+
     public Long getInternalUserId() {
         return internalUserId;
     }
@@ -83,6 +130,9 @@ public class UserAppDTO implements Serializable {
             ", city='" + getCity() + "'" +
             ", region='" + getRegion() + "'" +
             ", country='" + getCountry() + "'" +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
+            ", cin='" + getCin() + "'" +
+            ", image='" + getImage() + "'" +
             ", internalUserId=" + getInternalUserId() +
             "}";
     }

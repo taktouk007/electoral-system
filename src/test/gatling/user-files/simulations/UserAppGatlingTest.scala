@@ -75,6 +75,9 @@ class UserAppGatlingTest extends Simulation {
                 , "city":"SAMPLE_TEXT"
                 , "region":"SAMPLE_TEXT"
                 , "country":"SAMPLE_TEXT"
+                , "phoneNumber":"SAMPLE_TEXT"
+                , "cin":"SAMPLE_TEXT"
+                , "image":null
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_userApp_url"))).exitHereIfFailed

@@ -19,6 +19,9 @@
       "city": "City",
       "region": "Region",
       "country": "Country",
+      "phoneNumber": "Phone Number",
+      "cin": "Cin",
+      "image": "Image",
       "internalUser": "Internal User",
       "electionsMade": "Elections Made"
     }

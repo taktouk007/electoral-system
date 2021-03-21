@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -40,6 +41,17 @@ public class UserAppResourceIT {
 
     private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PHONE_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CIN = "AAAAAAAAAA";
+    private static final String UPDATED_CIN = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
     @Autowired
     private UserAppRepository userAppRepository;
@@ -68,7 +80,11 @@ public class UserAppResourceIT {
         UserApp userApp = new UserApp()
             .city(DEFAULT_CITY)
             .region(DEFAULT_REGION)
-            .country(DEFAULT_COUNTRY);
+            .country(DEFAULT_COUNTRY)
+            .phoneNumber(DEFAULT_PHONE_NUMBER)
+            .cin(DEFAULT_CIN)
+            .image(DEFAULT_IMAGE)
+            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
         return userApp;
     }
     /**
@@ -81,7 +97,11 @@ public class UserAppResourceIT {
         UserApp userApp = new UserApp()
             .city(UPDATED_CITY)
             .region(UPDATED_REGION)
-            .country(UPDATED_COUNTRY);
+            .country(UPDATED_COUNTRY)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
+            .cin(UPDATED_CIN)
+            .image(UPDATED_IMAGE)
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
         return userApp;
     }
 
@@ -108,6 +128,10 @@ public class UserAppResourceIT {
         assertThat(testUserApp.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testUserApp.getRegion()).isEqualTo(DEFAULT_REGION);
         assertThat(testUserApp.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testUserApp.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
+        assertThat(testUserApp.getCin()).isEqualTo(DEFAULT_CIN);
+        assertThat(testUserApp.getImage()).isEqualTo(DEFAULT_IMAGE);
+        assertThat(testUserApp.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
     }
 
     @Test
@@ -133,6 +157,106 @@ public class UserAppResourceIT {
 
     @Test
     @Transactional
+    public void checkCityIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setCity(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.toDto(userApp);
+
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkRegionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setRegion(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.toDto(userApp);
+
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCountryIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setCountry(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.toDto(userApp);
+
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPhoneNumberIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setPhoneNumber(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.toDto(userApp);
+
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkCinIsRequired() throws Exception {
+        int databaseSizeBeforeTest = userAppRepository.findAll().size();
+        // set the field null
+        userApp.setCin(null);
+
+        // Create the UserApp, which fails.
+        UserAppDTO userAppDTO = userAppMapper.toDto(userApp);
+
+
+        restUserAppMockMvc.perform(post("/api/user-apps")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(userAppDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<UserApp> userAppList = userAppRepository.findAll();
+        assertThat(userAppList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllUserApps() throws Exception {
         // Initialize the database
         userAppRepository.saveAndFlush(userApp);
@@ -144,7 +268,11 @@ public class UserAppResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(userApp.getId().intValue())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].region").value(hasItem(DEFAULT_REGION)))
-            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)));
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
+            .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
+            .andExpect(jsonPath("$.[*].cin").value(hasItem(DEFAULT_CIN)))
+            .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
     }
     
     @Test
@@ -160,7 +288,11 @@ public class UserAppResourceIT {
             .andExpect(jsonPath("$.id").value(userApp.getId().intValue()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
             .andExpect(jsonPath("$.region").value(DEFAULT_REGION))
-            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY));
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
+            .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
+            .andExpect(jsonPath("$.cin").value(DEFAULT_CIN))
+            .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
     }
     @Test
     @Transactional
@@ -185,7 +317,11 @@ public class UserAppResourceIT {
         updatedUserApp
             .city(UPDATED_CITY)
             .region(UPDATED_REGION)
-            .country(UPDATED_COUNTRY);
+            .country(UPDATED_COUNTRY)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
+            .cin(UPDATED_CIN)
+            .image(UPDATED_IMAGE)
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
         UserAppDTO userAppDTO = userAppMapper.toDto(updatedUserApp);
 
         restUserAppMockMvc.perform(put("/api/user-apps")
@@ -200,6 +336,10 @@ public class UserAppResourceIT {
         assertThat(testUserApp.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testUserApp.getRegion()).isEqualTo(UPDATED_REGION);
         assertThat(testUserApp.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testUserApp.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
+        assertThat(testUserApp.getCin()).isEqualTo(UPDATED_CIN);
+        assertThat(testUserApp.getImage()).isEqualTo(UPDATED_IMAGE);
+        assertThat(testUserApp.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
     }
 
     @Test

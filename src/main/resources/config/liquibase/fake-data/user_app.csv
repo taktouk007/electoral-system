@@ -1,11 +1,11 @@
-id;city;region;country
-1;North Laurinemouth;Station;Guatemala
-2;Keyshawnbury;Bedfordshire;Sweden
-3;Port Sidneystad;dynamic;Venezuela
-4;Ashtonport;Berkshire;Saint Lucia
-5;South Lilianaview;Corporate Rupiah Ergonomic Metal Pizza;Singapore
-6;South Natalie;out-of-the-box;Somalia
-7;New Trinity;HDD Mountain;Ukraine
-8;Fritschborough;PNG;Iceland
-9;West Betty;Seamless California Outdoors;Rwanda
-10;Lake Gerardside;Shoes;Papua New Guinea
+id;city;region;country;phone_number;cin;image;image_content_type
+1;North Laurinemouth;Station;Guatemala;Maryland tan;SSL;../fake-data/blob/hipster.png;image/png
+2;Townestad;dynamic;Venezuela;Sleek Sleek;bypass Nepal;../fake-data/blob/hipster.png;image/png
+3;Port Sylvia;Rupiah;Australia;Vatu;impactful copy out-of-the-box;../fake-data/blob/hipster.png;image/png
+4;Hoppestad;Cambridgeshire Investment Account Ukraine;Singapore;24/7;redundant disintermediate Frozen;../fake-data/blob/hipster.png;image/png
+5;Lake Kyleigh;Outdoors;Rwanda;interface;Small Soft Chicken out-of-the-box Cape Verde;../fake-data/blob/hipster.png;image/png
+6;Samanthabury;Louisiana Usability;Jersey;Games e-enable Accountability;RSS cross-platform Intelligent Plastic Hat;../fake-data/blob/hipster.png;image/png
+7;West Benmouth;Corporate bandwidth;China;Web Handcrafted Pakistan Rupee;Guernsey Personal Loan Account Open-architected;../fake-data/blob/hipster.png;image/png
+8;Gabriellachester;array;Iceland;Web Officer New Hampshire;killer Future SMS;../fake-data/blob/hipster.png;image/png
+9;East Jeniferville;Vista;Puerto Rico;primary Streets SMS;programming capacitor;../fake-data/blob/hipster.png;image/png
+10;East Joey;auxiliary knowledge user;Yemen;Web Licensed Cotton Cheese adapter;Technician Internal;../fake-data/blob/hipster.png;image/png
