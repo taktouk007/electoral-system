@@ -2,6 +2,7 @@ package com.kyubi.digital.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -20,14 +21,32 @@ public class UserApp implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "city")
+    @NotNull
+    @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "region")
+    @NotNull
+    @Column(name = "region", nullable = false)
     private String region;
 
-    @Column(name = "country")
+    @NotNull
+    @Column(name = "country", nullable = false)
     private String country;
+
+    @NotNull
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
+
+    @NotNull
+    @Column(name = "cin", nullable = false)
+    private String cin;
+
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_content_type")
+    private String imageContentType;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -82,6 +101,58 @@ public class UserApp implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public UserApp phoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCin() {
+        return cin;
+    }
+
+    public UserApp cin(String cin) {
+        this.cin = cin;
+        return this;
+    }
+
+    public void setCin(String cin) {
+        this.cin = cin;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public UserApp image(byte[] image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public UserApp imageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+        return this;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
     }
 
     public User getInternalUser() {
@@ -147,6 +218,10 @@ public class UserApp implements Serializable {
             ", city='" + getCity() + "'" +
             ", region='" + getRegion() + "'" +
             ", country='" + getCountry() + "'" +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
+            ", cin='" + getCin() + "'" +
+            ", image='" + getImage() + "'" +
+            ", imageContentType='" + getImageContentType() + "'" +
             "}";
     }
 }

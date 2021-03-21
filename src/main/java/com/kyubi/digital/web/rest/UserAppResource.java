@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -45,7 +46,7 @@ public class UserAppResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/user-apps")
-    public ResponseEntity<UserAppDTO> createUserApp(@RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
+    public ResponseEntity<UserAppDTO> createUserApp(@Valid @RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
         log.debug("REST request to save UserApp : {}", userAppDTO);
         if (userAppDTO.getId() != null) {
             throw new BadRequestAlertException("A new userApp cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +67,7 @@ public class UserAppResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/user-apps")
-    public ResponseEntity<UserAppDTO> updateUserApp(@RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
+    public ResponseEntity<UserAppDTO> updateUserApp(@Valid @RequestBody UserAppDTO userAppDTO) throws URISyntaxException {
         log.debug("REST request to update UserApp : {}", userAppDTO);
         if (userAppDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

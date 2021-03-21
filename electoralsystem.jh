@@ -27,9 +27,12 @@ entity Vote {
 }
 
 entity UserApp {
-	city String,
-    region String,
-    country String
+	city String required,
+    region String required,
+    country String required,
+    phoneNumber String required,
+    cin String required,
+    image ImageBlob
 }
 
 enum Scope {
