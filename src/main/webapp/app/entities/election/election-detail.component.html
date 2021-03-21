@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="election">
+            <h2><span jhiTranslate="electoralSystemApp.election.detail.title">Election</span> {{ election.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="electoralSystemApp.election.targetFunction">Target Function</span></dt>
+                <dd>
+                    <span>{{ election.targetFunction }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{ election.startDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{ election.endDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.scope">Scope</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'electoralSystemApp.Scope.' + election.scope }}">{{ election.scope }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.city">City</span></dt>
+                <dd>
+                    <span>{{ election.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.region">Region</span></dt>
+                <dd>
+                    <span>{{ election.region }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.country">Country</span></dt>
+                <dd>
+                    <span>{{ election.country }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.election.userApp">User App</span></dt>
+                <dd>
+                    <div *ngIf="election.userAppId">
+                        <a [routerLink]="['/user-app', election.userAppId, 'view']">{{ election.userAppId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/election', election.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

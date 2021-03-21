@@ -1,0 +1,33 @@
+{
+  "name": "Vote",
+  "fields": [
+    {
+      "fieldName": "candidateId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "submissionDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "election",
+      "otherEntityRelationshipName": "votes",
+      "relationshipName": "election",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210321144938",
+  "entityTableName": "vote",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Election",
+  "fields": [
+    {
+      "fieldName": "targetFunction",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "scope",
+      "fieldType": "Scope",
+      "fieldValues": "LOCAL,REGIONAL,NATIONAL"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "region",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vote",
+      "otherEntityRelationshipName": "election",
+      "relationshipName": "votes"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "candidate",
+      "otherEntityRelationshipName": "election",
+      "relationshipName": "candidates"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userApp",
+      "otherEntityRelationshipName": "electionsMade",
+      "relationshipName": "userApp",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210321144638",
+  "entityTableName": "election",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,31 @@
+{
+  "electoralSystemApp": {
+    "election": {
+      "home": {
+        "title": "Elections",
+        "createLabel": "Créer un nouveau Election",
+        "createOrEditLabel": "Créer ou éditer un Election",
+        "notFound": "Aucun Election trouvé"
+      },
+      "created": "Un nouveau Election a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Election avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Election avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Election {{ id }} ?"
+      },
+      "detail": {
+        "title": "Election"
+      },
+      "targetFunction": "Target Function",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "scope": "Scope",
+      "city": "City",
+      "region": "Region",
+      "country": "Country",
+      "votes": "Votes",
+      "candidates": "Candidates",
+      "userApp": "User App"
+    }
+  }
+}

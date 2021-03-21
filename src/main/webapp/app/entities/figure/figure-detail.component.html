@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="figure">
+            <h2><span jhiTranslate="electoralSystemApp.figure.detail.title">Figure</span> {{ figure.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="electoralSystemApp.figure.fullName">Full Name</span></dt>
+                <dd>
+                    <span>{{ figure.fullName }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.figure.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="figure.image">
+                        <a (click)="openFile(figure.imageContentType, figure.image)">
+                            <img [src]="'data:' + figure.imageContentType + ';base64,' + figure.image" style="max-width: 100%;" alt="figure image"/>
+                        </a>
+                        {{ figure.imageContentType }}, {{ byteSize(figure.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.figure.linkedIn">Linked In</span></dt>
+                <dd>
+                    <span>{{ figure.linkedIn }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.figure.facebook">Facebook</span></dt>
+                <dd>
+                    <span>{{ figure.facebook }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.figure.twitter">Twitter</span></dt>
+                <dd>
+                    <span>{{ figure.twitter }}</span>
+                </dd>
+                <dt><span jhiTranslate="electoralSystemApp.figure.candidate">Candidate</span></dt>
+                <dd>
+                    <div *ngIf="figure.candidateId">
+                        <a [routerLink]="['/candidate', figure.candidateId, 'view']">{{ figure.candidateId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/figure', figure.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
