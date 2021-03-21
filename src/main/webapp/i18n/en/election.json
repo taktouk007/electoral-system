@@ -1,0 +1,31 @@
+{
+  "electoralSystemApp": {
+    "election": {
+      "home": {
+        "title": "Elections",
+        "createLabel": "Create a new Election",
+        "createOrEditLabel": "Create or edit a Election",
+        "notFound": "No Elections found"
+      },
+      "created": "A new Election is created with identifier {{ param }}",
+      "updated": "A Election is updated with identifier {{ param }}",
+      "deleted": "A Election is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Election {{ id }}?"
+      },
+      "detail": {
+        "title": "Election"
+      },
+      "targetFunction": "Target Function",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "scope": "Scope",
+      "city": "City",
+      "region": "Region",
+      "country": "Country",
+      "votes": "Votes",
+      "candidates": "Candidates",
+      "userApp": "User App"
+    }
+  }
+}

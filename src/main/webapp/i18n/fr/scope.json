@@ -1,0 +1,10 @@
+{
+  "electoralSystemApp": {
+    "Scope": {
+      "null": "",
+      "LOCAL": "LOCAL",
+      "REGIONAL": "REGIONAL",
+      "NATIONAL": "NATIONAL"
+    }
+  }
+}

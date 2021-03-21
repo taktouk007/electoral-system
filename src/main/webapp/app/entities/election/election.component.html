@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="electoralSystemApp.election.home.title">Elections</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-election" [routerLink]="['/election/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="electoralSystemApp.election.home.createLabel">
+            Create a new Election
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="elections?.length === 0">
+        <span jhiTranslate="electoralSystemApp.election.home.notFound">No elections found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="elections && elections.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.targetFunction">Target Function</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.startDate">Start Date</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.endDate">End Date</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.scope">Scope</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.city">City</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.region">Region</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.country">Country</span></th>
+                    <th scope="col" ><span jhiTranslate="electoralSystemApp.election.userApp">User App</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let election of elections ;trackBy: trackId">
+                    <td><a [routerLink]="['/election', election.id, 'view']">{{ election.id }}</a></td>
+                    <td>{{ election.targetFunction }}</td>
+                    <td>{{ election.startDate | date:'medium' }}</td>
+                    <td>{{ election.endDate | date:'medium' }}</td>
+                    <td jhiTranslate="{{ 'electoralSystemApp.Scope.' + election.scope }}">{{ election.scope }}</td>
+                    <td>{{ election.city }}</td>
+                    <td>{{ election.region }}</td>
+                    <td>{{ election.country }}</td>
+                    <td>
+                        <div *ngIf="election.userAppId">
+                            <a [routerLink]="['/user-app', election.userAppId , 'view']" >{{ election.userAppId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/election', election.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/election', election.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(election)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

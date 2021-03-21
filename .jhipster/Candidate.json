@@ -1,0 +1,30 @@
+{
+  "name": "Candidate",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "figure",
+      "otherEntityRelationshipName": "candidate",
+      "relationshipName": "figures"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "election",
+      "otherEntityRelationshipName": "candidates",
+      "relationshipName": "election",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210321144838",
+  "entityTableName": "candidate",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

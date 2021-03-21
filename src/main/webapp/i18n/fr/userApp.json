@@ -1,0 +1,26 @@
+{
+  "electoralSystemApp": {
+    "userApp": {
+      "home": {
+        "title": "UserApps",
+        "createLabel": "Créer un nouveau User App",
+        "createOrEditLabel": "Créer ou éditer un User App",
+        "notFound": "Aucun User App trouvé"
+      },
+      "created": "Un nouveau User App a été créé avec l'identifiant {{ param }}",
+      "updated": "Le User App avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le User App avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le User App {{ id }} ?"
+      },
+      "detail": {
+        "title": "User App"
+      },
+      "city": "City",
+      "region": "Region",
+      "country": "Country",
+      "internalUser": "Internal User",
+      "electionsMade": "Elections Made"
+    }
+  }
+}

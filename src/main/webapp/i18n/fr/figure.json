@@ -1,0 +1,27 @@
+{
+  "electoralSystemApp": {
+    "figure": {
+      "home": {
+        "title": "Figures",
+        "createLabel": "Créer un nouveau Figure",
+        "createOrEditLabel": "Créer ou éditer un Figure",
+        "notFound": "Aucun Figure trouvé"
+      },
+      "created": "Un nouveau Figure a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Figure avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Figure avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Figure {{ id }} ?"
+      },
+      "detail": {
+        "title": "Figure"
+      },
+      "fullName": "Full Name",
+      "image": "Image",
+      "linkedIn": "Linked In",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "candidate": "Candidate"
+    }
+  }
+}
