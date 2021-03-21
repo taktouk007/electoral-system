@@ -1,0 +1,52 @@
+
+
+entity Election {
+	targetFunction String required,
+    startDate Instant,
+    endDate Instant,
+    scope Scope,
+    city String,
+    region String,
+    country String
+}
+
+entity Figure {
+	fullName String required,
+    image ImageBlob,
+    linkedIn String,
+    facebook String,
+    twitter String
+}
+
+entity Candidate {
+}
+
+entity Vote {
+	candidateId String,
+    submissionDate Instant
+}
+
+entity UserApp {
+	city String,
+    region String,
+    country String
+}
+
+enum Scope {
+	LOCAL, REGIONAL, NATIONAL
+}
+
+
+relationship OneToOne {
+  UserApp{internalUser} to User
+}
+
+relationship OneToMany {
+	Candidate{figures} to Figure
+    Election{votes} to Vote
+    UserApp{electionsMade} to Election
+    Election{candidates} to Candidate
+}
+
+dto * with mapstruct
+service * with serviceImpl
