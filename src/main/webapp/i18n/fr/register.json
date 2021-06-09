@@ -13,11 +13,31 @@
           "pattern": "Votre nom d'utilisateur est invalide."
         }
       },
-      "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",
-      "error": {
-        "fail": "<strong>Compte non créé !</strong> Merci d'essayer à nouveau plus tard.",
-        "userexists": "<strong>Ce compte utilisateur existe déjà !</strong> Veuillez en choisir un autre.",
-        "emailexists": "<strong>Cet email est déjà utilisé !</strong> Veuillez en choisir un autre."
+      "messages1": {
+        "validate": {
+          "login1": {
+            "required": "Votre prénom d'utilisateur est obligatoire.",
+            "minlength": "Votre prénom d'utilisateur doit contenir plus d'un caractère.",
+            "maxlength": "Votre prénom d'utilisateur ne peut pas contenir plus de 50 caractères.",
+            "pattern": "Votre prénom d'utilisateur est invalide."
+          }
+        },
+        "messages2": {
+          "validate": {
+            "login2": {
+              "required": "Votre nom-région est obligatoire.",
+              "minlength": "Votre nom-région doit contenir plus d'un caractère.",
+              "maxlength": "Votre nom-région ne peut pas contenir plus de 50 caractères.",
+              "pattern": "Votre nom-région est invalide."
+            }
+          },
+          "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",
+          "error": {
+            "fail": "<strong>Compte non créé !</strong> Merci d'essayer à nouveau plus tard.",
+            "userexists": "<strong>Ce compte utilisateur existe déjà !</strong> Veuillez en choisir un autre.",
+            "emailexists": "<strong>Cet email est déjà utilisé !</strong> Veuillez en choisir un autre."
+          }
+        }
       }
     }
   }

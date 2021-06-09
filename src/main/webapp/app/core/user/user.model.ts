@@ -5,6 +5,7 @@ export interface IUser {
   lastName?: string;
   email?: string;
   activated?: boolean;
+  voteLocked?: boolean;
   langKey?: string;
   authorities?: string[];
   createdBy?: string;
